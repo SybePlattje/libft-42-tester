@@ -6,10 +6,13 @@ CFLAGS = -Wall -Werror -Wextra -MMD -MP -Lbsd -lbsd
 LIBFT_DIR = ./../
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRC_DIR = ./src
+SRC_DIR = ./tests
 OBJ_DIR = ./obj
+OBJ_BONUS_DIR = $(OBJ_DIR)/bonus
 
 vpath %.c $(SRC_DIR)
+vpath %.c ./src
+vpath %.c $(SRC_DIR)/bonus
 
 SRC = main.c \
 	atoiTest.c \
@@ -27,6 +30,7 @@ SRC = main.c \
 	memmoveTest.c \
 	memsetTest.c \
 	putcharFdTest.c \
+	putendlFdTest.c \
 	putnbrFdTest.c \
 	putstrFdTest.c \
 	splitTest.c \
@@ -46,8 +50,6 @@ SRC = main.c \
 	tolowerTest.c \
 	toupperTest.c \
 
-vpath %.c $(SRC_DIR)/bonus
-
 SRC_BONUS = lstaddBackTest.c \
 	lstaddFrontTest.c \
 	lstclearTest.c \
@@ -59,8 +61,10 @@ SRC_BONUS = lstaddBackTest.c \
 	lstnewTest.c \
 	lstSizeTest.c \
 
-OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
+OBJ = $(addprefix $(OBJ_DIR)/, $SRC:.c=.o))
+OBJ_BONUS = $(addprefix $(OBJ_BONUS_DIR)/, $(SRC_BONUS:.c=.o))
 DEP = $(OBJ:.o=.d)
+DEP_BONUS = $(OBJ_BONUS:.o=.d)
 
 all: $(NAME)
 
@@ -71,11 +75,23 @@ $(NAME): $(OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $(LIBFT) -o $@ $^
 	@echo Done compiling!
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.C
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
+	-include $(DEP)
 
--include $(DEP)
+bonus: $(OBJ_BONUS) $(LIBFT_BONUS)
+	@$(CC) $(CFLAGS) $(LIBFT_BONUS) -o $@ $^ -D BONUS=1
+	@echo Done compiling!
+
+$(OBJ_BONUS)/%.o: $(SRC_DIR)/bonus/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	-include $(DEP_BONUS)
+
+$(LIBFT_BONUS):
+	@make -C $(LIBFT_DIR) bonus
+
 
 clean:
 	@rm -rf $(OBJ_DIR)
@@ -87,4 +103,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

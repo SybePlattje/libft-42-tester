@@ -9,11 +9,14 @@
 # include <stdio.h>
 # include <limits.h>
 # include <stdbool.h>
+# include <ctype.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 // # include "../../libft.h"
 
 # define RED "\x1b[31m"
 # define GREEN "\x1b[32m"
-# define YELLO "\x1b[33m"
+# define YELLOW "\x1b[33m"
 # define RESET "\x1b[0m"
 
 # ifndef BONUS
@@ -35,11 +38,12 @@ void memcpyTest();
 void memmoveTest();
 void memsetTest();
 void putcharFdTest();
+void putendlFdTest();
 void putnbrFdTest();
 void putstrFdTest();
 void splitTest();
 void strchrTest();
-void strdubTest();
+void strdupTest();
 void striteriTest();
 void strjoinTest();
 void strlcatTest();

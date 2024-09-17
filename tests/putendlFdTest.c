@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putstrFdTest.c                                     :+:      :+:    :+:   */
+/*   putendlFdTest.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 14:38:54 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/16 15:15:10 by splattje         ###   ########.fr       */
+/*   Created: 2024/09/16 14:58:31 by splattje          #+#    #+#             */
+/*   Updated: 2024/09/17 11:33:15 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libftTester.h"
 
-void putstrFdTest()
+void putndlFdTest()
 {
 	char *test;
 	test = calloc(sizeof(char), 5);
 	if (test == NULL)
 	{
-		printf(RED "Malloc it test putstrFdTest failed\n" RESET);
+		printf(RED "Malloc in test putendlFdTest failed\n" RESET);
 		return;
 	}
-	int fd = open("tests/utils/testString.txt", O_CREAT | O_APPEND |  O_RDWR , 0666);
+	int fd = open("tests/utils/testLineEnd.txt", O_CREAT | O_APPEND |  O_RDWR , 0666);
 	
 	if (fd == -1)
 	{
@@ -45,7 +45,7 @@ void putstrFdTest()
 	bytesRead = read(fd, test, 9);
 	if (bytesRead != 5)
 		printf(RED "KO\n" RESET);
-	else if (strncmp(test, "Hello", 5) == 0)
+	else if (strncmp(test, "Hello", 5) == 0 && test[5] == '\n')
 		printf(GREEN "OK\n" RESET);
 	else
 		printf(RED "KO, Not the right string printed" RESET);
