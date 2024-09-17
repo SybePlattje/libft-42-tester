@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:00:05 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/16 14:44:41 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:37:53 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void isdigitTest()
 			printf(YELLOW "OK, but different return value " RESET);
 	}
 	else
-		printf(RED "KO ", RESET);
+		printf(RED "KO " RESET);
 
 	standard = isdigit(test2);
 	testFunction = ft_isdigit(test2);
@@ -45,7 +45,7 @@ void isdigitTest()
 			printf(YELLOW "OK, but different return value " RESET);
 	}
 	else
-		printf(RED "KO ", RESET);
+		printf(RED "KO " RESET);
 
 	standard = isdigit(test3);
 	testFunction = ft_isdigit(test3);
@@ -58,7 +58,7 @@ void isdigitTest()
 			printf(YELLOW "OK, but different return value " RESET);
 	}
 	else
-		printf(RED "KO ", RESET);
+		printf(RED "KO " RESET);
 
 	standard = isdigit(test4);
 	testFunction = ft_isdigit(test4);
@@ -71,7 +71,7 @@ void isdigitTest()
 			printf(YELLOW "OK, but different return value " RESET);
 	}
 	else
-		printf(RED "KO ", RESET);
+		printf(RED "KO " RESET);
 
 	standard = isdigit(test5);
 	testFunction = ft_isdigit(test5);

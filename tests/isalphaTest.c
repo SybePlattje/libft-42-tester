@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 12:59:54 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/16 14:44:28 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:37:06 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void isalphaTest()
 	else
 		printf(RED "KO " RESET);
 
-	int testFunction = ft_isalpha(test3);
-	int standard = isalpha(test3);
+	testFunction = ft_isalpha(test3);
+	standard = isalpha(test3);
 	printf("test3: ");
 	if (testFunction && standard)
 	{
@@ -61,8 +61,8 @@ void isalphaTest()
 	else
 		printf(RED "KO " RESET);
 
-	int testFunction = ft_isalpha(test4);
-	int standard = isalpha(test4);
+	testFunction = ft_isalpha(test4);
+	standard = isalpha(test4);
 	printf("test4: ");
 	if (testFunction && standard)
 	{
@@ -74,8 +74,8 @@ void isalphaTest()
 	else
 		printf(RED "KO " RESET);
 
-	int testFunction = ft_isalpha(test5);
-	int standard = isalpha(test5);
+	testFunction = ft_isalpha(test5);
+	standard = isalpha(test5);
 	printf("test5: ");
 	if (testFunction && standard)
 	{
@@ -87,16 +87,16 @@ void isalphaTest()
 	else
 		printf(RED "KO " RESET);
 
-	int testFunction = ft_isalpha(test6);
-	int standard = isalpha(test6);
+	testFunction = ft_isalpha(test6);
+	standard = isalpha(test6);
 	printf("test6: ");
 	if (!testFunction && !standard)
 		printf(GREEN "OK " RESET);
 	else
 		printf(RED "KO " RESET);
 
-	int testFunction = ft_isalpha(test7);
-	int standard = isalpha(test7);
+	testFunction = ft_isalpha(test7);
+	standard = isalpha(test7);
 	printf("test7: ");
 	if (!testFunction && !standard)
 		printf(GREEN "OK\n" RESET);

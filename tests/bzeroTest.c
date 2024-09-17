@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:45:09 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/16 14:44:15 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:36:09 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void bzeroTest()
 		printf(GREEN "OK " RESET);
 
 	failed = false;
-	ft_bezo(test2, 42);
+	ft_bzero(test2, 42);
 	int index = 0;
 	printf("test3: ");
 	for(; index < 100 && test2[index] == 0; ++index)

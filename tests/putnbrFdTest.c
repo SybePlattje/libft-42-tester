@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:27:49 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/16 15:55:59 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 13:12:34 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void putnbrFdTest()
 	else
 		printf(RED "KO, Not the right number printed" RESET);
 	close(fd);
-	if (remove("test/utils/testNumber.txt") != 0)
+	if (remove("tests/utils/testNumber.txt") != 0)
 		printf(RED "Failed to remove testNumber.txt in tests/utils/\n Remove manualy before running tester again\n" RESET);
 	free(test);
 }

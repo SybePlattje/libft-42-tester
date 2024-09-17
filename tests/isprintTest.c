@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:00:11 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/16 14:44:46 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:38:16 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void isprintTest()
 			printf(YELLOW "OK, but different return value " RESET);
 	}
 	else
-		printf(RED "KO ", RESET);
+		printf(RED "KO " RESET);
 	
 	standard = isprint(test2);
 	testFunction = ft_isprint(test2);
@@ -46,7 +46,7 @@ void isprintTest()
 			printf(YELLOW "OK, but different return value " RESET);
 	}
 	else
-		printf(RED "KO ", RESET);
+		printf(RED "KO " RESET);
 
 	standard = isprint(test3);
 	testFunction = ft_isprint(test3);

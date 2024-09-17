@@ -12,7 +12,7 @@
 # include <ctype.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-// # include "../../libft.h"
+# include "../../libft.h"
 
 # define RED "\x1b[31m"
 # define GREEN "\x1b[32m"

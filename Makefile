@@ -1,7 +1,7 @@
-NAME=libftTester
+NAME = libftTester
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -MMD -MP -Lbsd -lbsd
+CFLAGS = -Wall -Werror -Wextra -MMD -MP -g #-Lbsd -lbsd
 
 LIBFT_DIR = ./../
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -11,7 +11,6 @@ OBJ_DIR = ./obj
 OBJ_BONUS_DIR = $(OBJ_DIR)/bonus
 
 vpath %.c $(SRC_DIR)
-vpath %.c ./src
 vpath %.c $(SRC_DIR)/bonus
 
 SRC = main.c \
@@ -53,16 +52,15 @@ SRC = main.c \
 SRC_BONUS = lstaddBackTest.c \
 	lstaddFrontTest.c \
 	lstclearTest.c \
-	lstclearTest.c \
 	lstdeloneTest.c \
 	lstiterTest.c \
 	lstlastTest.c \
 	lstmapTest.c \
 	lstnewTest.c \
-	lstSizeTest.c \
+	lstsizeTest.c \
 
-OBJ = $(addprefix $(OBJ_DIR)/, $SRC:.c=.o))
-OBJ_BONUS = $(addprefix $(OBJ_BONUS_DIR)/, $(SRC_BONUS:.c=.o))
+OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
+OBJ_BONUS = $(SRC_BONUS:%.c=$(OBJ_BONUS_DIR)/%.o)
 DEP = $(OBJ:.o=.d)
 DEP_BONUS = $(OBJ_BONUS:.o=.d)
 
@@ -78,27 +76,28 @@ $(NAME): $(OBJ) $(LIBFT)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
-	-include $(DEP)
+-include $(DEP)
 
-bonus: $(OBJ_BONUS) $(LIBFT_BONUS)
-	@$(CC) $(CFLAGS) $(LIBFT_BONUS) -o $@ $^ -D BONUS=1
+bonus: CFLAGS += -D BONUS=1
+
+bonus: $(OBJ) $(OBJ_BONUS) $(LIBFT)
+	@make -C $(LIBFT_DIR) bonus
+	@$(CC) $(CFLAGS) $(LIBFT) $(LIBFT_BONUS) -o $(NAME) $^
 	@echo Done compiling!
 
-$(OBJ_BONUS)/%.o: $(SRC_DIR)/bonus/%.c
+$(OBJ_BONUS_DIR)/%.o: $(SRC_DIR)/bonus/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
-	-include $(DEP_BONUS)
-
-$(LIBFT_BONUS):
-	@make -C $(LIBFT_DIR) bonus
-
+-include $(DEP_BONUS)
 
 clean:
 	@rm -rf $(OBJ_DIR)
+	@make -C $(LIBFT_DIR) clean
 	@echo Deleted objects!
 
 fclean: clean
 	@rm -f $(NAME)
+	@make -C $(LIBFT_DIR) fclean
 	@echo Deleted program!
 
 re: fclean all

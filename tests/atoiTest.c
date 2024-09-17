@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:19:10 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/16 14:44:05 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:35:41 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void atoiTest()
 	else
 		printf(GREEN "OK " RESET);
 	
-	char test3 = "-2147483648";
+	char *test3 = "-2147483648";
 	standard = atoi(test3);
 	written = ft_atoi(test3);
 	printf("test3: ");

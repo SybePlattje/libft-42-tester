@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 14:38:54 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/16 15:15:10 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 13:27:27 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void putstrFdTest()
 	printf("test1: ");
 	ft_putstr_fd(NULL, fd);
 	lseek(fd, 0, SEEK_SET); // Reset the file pointer to the start of the file
-	int bytesRead = read(fd, test, 9);
+	int bytesRead = read(fd, test, 1);
 	if (bytesRead != 0)
 		printf(RED "KO " RESET);
 	else
@@ -42,7 +42,7 @@ void putstrFdTest()
 	printf("test2: ");
 	ft_putstr_fd("Hello", fd);
 	lseek(fd, 0, SEEK_SET); // Reset the file pointer to the start of the file
-	bytesRead = read(fd, test, 9);
+	bytesRead = read(fd, test, 5);
 	if (bytesRead != 5)
 		printf(RED "KO\n" RESET);
 	else if (strncmp(test, "Hello", 5) == 0)
@@ -50,7 +50,7 @@ void putstrFdTest()
 	else
 		printf(RED "KO, Not the right string printed" RESET);
 	close(fd);
-	if (remove("tests/utils/testString.txt") != NULL)
+	if (remove("tests/utils/testString.txt") != 0)
 		printf(RED "Failed to remove testTring.txt in tests/utils/\n Remove manualy before running tester again\n" RESET);
 	free(test);
 	// TODO add memcheck

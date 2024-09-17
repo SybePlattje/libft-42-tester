@@ -6,16 +6,16 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 14:58:31 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/17 11:33:15 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 13:39:50 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libftTester.h"
 
-void putndlFdTest()
+void putendlFdTest()
 {
 	char *test;
-	test = calloc(sizeof(char), 5);
+	test = calloc(sizeof(char), 10);
 	if (test == NULL)
 	{
 		printf(RED "Malloc in test putendlFdTest failed\n" RESET);
@@ -30,7 +30,7 @@ void putndlFdTest()
 		return;
 	}
 	printf("test1: ");
-	ft_putstr_fd(NULL, fd);
+	ft_putendl_fd(NULL, fd);
 	lseek(fd, 0, SEEK_SET); // Reset the file pointer to the start of the file
 	int bytesRead = read(fd, test, 9);
 	if (bytesRead != 0)
@@ -40,18 +40,18 @@ void putndlFdTest()
 	lseek(fd, 0, SEEK_SET); // Reset the file pointer to the start of the file
 	
 	printf("test2: ");
-	ft_putstr_fd("Hello", fd);
+	ft_putendl_fd("Hello", fd);
 	lseek(fd, 0, SEEK_SET); // Reset the file pointer to the start of the file
 	bytesRead = read(fd, test, 9);
-	if (bytesRead != 5)
+	if (bytesRead != 6)
 		printf(RED "KO\n" RESET);
 	else if (strncmp(test, "Hello", 5) == 0 && test[5] == '\n')
 		printf(GREEN "OK\n" RESET);
 	else
-		printf(RED "KO, Not the right string printed" RESET);
+		printf(RED "KO, Not the right string printed\n" RESET);
 	close(fd);
-	if (remove("tests/utils/testString.txt") != NULL)
-		printf(RED "Failed to remove testTring.txt in tests/utils/\n Remove manualy before running tester again\n" RESET);
+	if (remove("tests/utils/testLineEnd.txt") != 0)
+		printf(RED "Failed to remove testLineEnd.txt in tests/utils/\n Remove manualy before running tester again\n" RESET);
 	free(test);
 	// TODO add memcheck
 }

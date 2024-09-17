@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:14:15 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/16 14:55:48 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 13:19:44 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,76 +32,76 @@ int main(void)
 	isprintTest();
 	printf("itoa tests\n");
 	itoaTest();
-	printf("FUNC tests\n");
+	printf("memchr tests\n");
 	memchrTest();
-	printf("FUNC tests\n");
+	printf("memcmp tests\n");
 	memcmpTest();
-	printf("FUNC tests\n");
+	printf("memcpy tests\n");
 	memcpyTest();
-	printf("FUNC tests\n");
+	printf("memmove tests\n");
 	memmoveTest();
-	printf("FUNC tests\n");
+	printf("memset tests\n");
 	memsetTest();
-	printf("FUNC tests\n");
+	printf("putcharFd tests\n");
 	putcharFdTest();
-	printf("FUNC tests\n");
-	putndlFdTest();
-	printf("FUNC tests\n");
+	printf("putendlFd tests\n");
+	putendlFdTest();
+	printf("putnbrFd tests\n");
 	putnbrFdTest();
-	printf("FUNC tests\n");
+	printf("putstrFd tests\n");
 	putstrFdTest();
-	printf("FUNC tests\n");
+	printf("split tests\n");
 	splitTest();
-	printf("FUNC tests\n");
+	printf("strchr tests\n");
 	strchrTest();
-	printf("FUNC tests\n");
-	strdubTest();
-	printf("FUNC tests\n");
+	printf("strdup tests\n");
+	strdupTest();
+	printf("striteri tests\n");
 	striteriTest();
-	printf("FUNC tests\n");
+	printf("strjoin tests\n");
 	strjoinTest();
-	printf("FUNC tests\n");
+	printf("strlcat tests\n");
 	strlcatTest();
-	printf("FUNC tests\n");
+	printf("strlcpy tests\n");
 	strlcpyTest();
-	printf("FUNC tests\n");
+	printf("strlen tests\n");
 	strlenTest();
-	printf("FUNC tests\n");
+	printf("strmapi tests\n");
 	strmapiTest();
-	printf("FUNC tests\n");
+	printf("strncmp tests\n");
 	strncmpTest();
-	printf("FUNC tests\n");
+	printf("strnstr tests\n");
 	strnstrTest();
-	printf("FUNC tests\n");
+	printf("strrchr tests\n");
 	strrchrTest();
-	printf("FUNC tests\n");
+	printf("strtrim tests\n");
 	strtrimTest();
-	printf("FUNC tests\n");
+	printf("substr tests\n");
 	substrTest();
-	printf("FUNC tests\n");
+	printf("tolower tests\n");
 	tolowerTest();
-	printf("FUNC tests\n");
+	printf("toupper tests\n");
 	toupperTest();
 
 	if (BONUS)
 	{
-		printf("FUNC tests\n");
+		printf("lstaddBack tests\n");
 		lstaddBackTest();
-		printf("FUNC tests\n");
+		printf("lstaddFront tests\n");
 		lstaddFrontTest();
-		printf("FUNC tests\n");
+		printf("lstclear tests\n");
 		lstclearTest();
-		printf("FUNC tests\n");
+		printf("lstdelone tests\n");
 		lstdeloneTest();
-		printf("FUNC tests\n");
+		printf("lstiter tests\n");
 		lstiterTest();
-		printf("FUNC tests\n");
-		lstlastTste();
-		printf("FUNC tests\n");
+		printf("lstlast tests\n");
+		lstlastTest();
+		printf("lstmap tests\n");
 		lstmapTest();
-		printf("FUNC tests\n");
+		printf("lstnew tests\n");
 		lstnewTest();
-		printf("FUNC tests\n");
+		printf("lstsize tests\n");
 		lstsizeTest();
 	}
 	return 1;
