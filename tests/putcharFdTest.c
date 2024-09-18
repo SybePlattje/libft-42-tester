@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:13:41 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/16 14:44:53 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:25:17 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void putcharFdTest()
 		printf(RED "Error opening testfile\n" RESET);
 		return;
 	}
+	printf("test1: ");
 	ft_putchar_fd('c', fd);
 	char out = 0;
 	lseek(fd, 0, SEEK_SET); // Reset the file pointer to the start of the file
-	
 	int bytesRead = read(fd, &out,  9);
 	if (bytesRead != 1)
 		printf(RED "KO incorrect bytes has been read\n" RESET);

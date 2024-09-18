@@ -1,7 +1,7 @@
 NAME = libftTester
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -MMD -MP -g #-Lbsd -lbsd
+CFLAGS = -Wall -Werror -Wextra -MMD -MP -g
 
 LIBFT_DIR = ./../
 LIBFT = $(LIBFT_DIR)/libft.a

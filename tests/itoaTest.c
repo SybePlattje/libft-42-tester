@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:02:00 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/17 11:27:58 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:16:13 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void itoaTest()
 	else
 	{
 		if (!strcmp(output, "-3442") && output[5] == '\0')
-			printf(GREEN " OK " RESET);
+			printf(GREEN "OK " RESET);
 		else
 			printf(RED "KO " RESET);
 		free(output);

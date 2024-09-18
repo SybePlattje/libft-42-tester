@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:27:49 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/17 13:12:34 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:25:34 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void putnbrFdTest()
 		free(test);
 		return;
 	}
+	printf("test1: ");
 	ft_putnbr_fd(1256, fd);
 	lseek(fd, 0, SEEK_SET); // Reset the file pointer to the start of the file
 	int bytesRead = read(fd, test, 4);
