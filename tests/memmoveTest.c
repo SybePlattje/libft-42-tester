@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memmoveTest.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sybe <sybe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:01:23 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 12:12:12 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 20:37:45 by sybe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,12 @@ void memmoveTest()
 	char sResult2[] = {67, 67, 68, 68, 69, 0, 45};
 
 	ft_printf("test1: ");
-	if (ft_memmove(s0, s, 7) == s0 && !memcmp(s, s0, 7))
-		ft_printf(GREEN "OK " RESET);
-	else
-		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	check(ft_memmove(s0, s, 7) == s0 && !memcmp(s, s0, 7));
+	checkMemory();
 	
 	ft_printf("test2: ");
-	if (ft_memmove(s, s + 2, 0) && !memcmp(s, sCpy, 7))
-		ft_printf(GREEN "OK " RESET);
-	else
-		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	check(ft_memmove(s, s + 2, 0) && !memcmp(s, sCpy, 7));
+	checkMemory();
 
 	ft_printf("test3: ");
 	if (ft_memmove(s, s + 2, 2) == s && !memcmp(s, sResult, 7))

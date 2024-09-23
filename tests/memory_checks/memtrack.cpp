@@ -6,11 +6,11 @@
 //#include <malloc.h>
 #include <unistd.h>
 
-static void* (*real_malloc)(size_t) = nullptr;
+static void* (*real_malloc)(std::size_t) = nullptr;
 static void (*real_free)(void*) = nullptr;
 
 t_memory* allocation_memory = nullptr;
-size_t g_total_allocated_memory = 0;
+std::size_t g_total_allocated_memory = 0;
 
 static bool inMalloc = false;
 
@@ -37,12 +37,12 @@ static void init()
 }
 
 
-extern "C" void* malloc(size_t size) {
+extern "C" void* malloc(std::size_t size) {
 	try
 	{
 		if (inMalloc)
 			return nullptr;
-		void* ptr = NULL;
+		void* ptr = nullptr;
 		inMalloc = true;
 		if (!real_malloc)
 			init();
@@ -116,7 +116,7 @@ extern "C" void free(void* ptr) {
 	}
 }
 
-int checkSize(void* ptr, size_t size)
+void checkSize(void* ptr, std::size_t size)
 {
 	t_memory* current = allocation_memory;
 	while (allocation_memory != nullptr)
@@ -124,11 +124,27 @@ int checkSize(void* ptr, size_t size)
 		if (current->ptr == ptr)
 		{
 			 if (current->size == size)
-			 	return 1;
+			 	ft_printf(GREEN "SOK " RESET);
 			else
-				return 2;
+				ft_printf(RED "SKO " RESET);
 		}
 		current = current->next;
 	}
-	return 0;
+	ft_printf(RED "NKO " RESET);
+}
+
+void checkMemory()
+{
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "SOK " RESET);
+	else
+		ft_printf(RED "SKO " RESET);
+}
+
+void check(bool statement)
+{
+	if (statement)
+		ft_printf(GREEN "OK " RESET);
+	else
+		ft_printf(RED "KO " RESET);
 }

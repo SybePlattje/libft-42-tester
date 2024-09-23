@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   isalnumTest.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sybe <sybe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 12:59:49 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 11:43:17 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 20:12:18 by sybe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ void isalnumTest()
 	}
 	else
 		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	testFunction = ft_isalnum(test2);
 	standard = isalnum(test2);
@@ -52,10 +49,7 @@ void isalnumTest()
 	}
 	else
 		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	testFunction = ft_isalnum(test3);
 	standard = isalnum(test3);
@@ -69,10 +63,7 @@ void isalnumTest()
 	}
 	else
 		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	testFunction = ft_isalnum(test4);
 	standard = isalnum(test4);
@@ -86,32 +77,18 @@ void isalnumTest()
 	}
 	else
 		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	testFunction = ft_isalnum(test5);
 	standard = isalnum(test5);
 	ft_printf("test5: ");
-	if (!testFunction && !standard)
-		ft_printf(GREEN "OK " RESET);
-	else
-		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	check(!testFunction && !standard);
+	checkMemory();
 	
 	testFunction = ft_isalnum(test6);
 	standard = isalnum(test6);
 	ft_printf("test6: ");
-	if (!testFunction && !standard)
-		ft_printf(GREEN "OK " RESET);
-	else
-		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK\n" RESET);
-	else
-		ft_printf(RED "MKO\n" RESET);
+	check(!testFunction && !standard);
+	checkMemory();
+	write(1, "\n", 1);
 }

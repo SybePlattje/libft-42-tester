@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   isprintTest.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sybe <sybe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:00:11 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 11:46:29 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 20:12:45 by sybe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ void isprintTest()
 	}
 	else
 		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 	
 	standard = isprint(test2);
 	testFunction = ft_isprint(test2);
@@ -51,68 +48,36 @@ void isprintTest()
 	}
 	else
 		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	standard = isprint(test3);
 	testFunction = ft_isprint(test3);
 	ft_printf("test3: ");
-	if (!standard && !testFunction)
-		ft_printf(GREEN "OK " RESET);
-	else
-		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	check(!standard && !testFunction);
+	checkMemory();
 
 	standard = isprint(test4);
 	testFunction = ft_isprint(test4);
 	ft_printf("test4: ");
-	if (!standard && !testFunction)
-		ft_printf(GREEN "OK " RESET);
-	else
-		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	check(!standard && !testFunction);
+	checkMemory();
 
 	standard = isprint(test5);
 	testFunction = ft_isprint(test5);
 	ft_printf("test5: ");
-	if (!standard && !testFunction)
-		ft_printf(GREEN "OK " RESET);
-	else
-		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	check(!standard && !testFunction);
+	checkMemory();
 
 	standard = isprint(test6);
 	testFunction = ft_isprint(test6);
 	ft_printf("test6: ");
-	if (!standard && !testFunction)
-		ft_printf(GREEN "OK " RESET);
-	else
-		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	check(!standard && !testFunction);
+	checkMemory();
 
 	standard = isprint(test7);
 	testFunction = ft_isprint(test7);
 	ft_printf("test7: ");
-	if (!standard && !testFunction)
-		ft_printf(GREEN "OK " RESET);
-	else
-		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK\n" RESET);
-	else
-		ft_printf(RED "MKO\n" RESET);
+	check(!standard && !testFunction);
+	checkMemory();
+	write(1, "\n", 1);
 }

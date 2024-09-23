@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bzeroTest.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sybe <sybe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:45:09 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 11:37:38 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 20:11:57 by sybe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ void bzeroTest()
 	}
 	if (!failed)
 		ft_printf(GREEN "OK " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	failed = false;
 	char test2[100];
@@ -47,10 +44,7 @@ void bzeroTest()
 	}
 	if (!failed)
 		ft_printf(GREEN "OK " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	failed = false;
 	ft_bzero(test2, 42);
@@ -66,8 +60,6 @@ void bzeroTest()
 	}
 	if (!failed)
 		ft_printf(GREEN "OK " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK\n" RESET);
-	else
-		ft_printf(RED "MKO\n" RESET);
+	checkMemory();
+	write(1, "\n", 1);
 }

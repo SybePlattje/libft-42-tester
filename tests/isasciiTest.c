@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   isasciiTest.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sybe <sybe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 12:59:58 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 11:45:06 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 20:12:29 by sybe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ void isasciiTest()
 	}
 	else
 		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	standard = isascii(test2);
 	testFunction = ft_isascii(test2);
@@ -49,10 +46,7 @@ void isasciiTest()
 	}
 	else
 		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 	
 	standard = isascii(test3);
 	testFunction = ft_isascii(test3);
@@ -66,32 +60,17 @@ void isasciiTest()
 	}
 	else
 		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 	
 	standard = isascii(test4);
 	testFunction = ft_isascii(test4);
 	ft_printf("test4: ");
-	if (!standard && !testFunction)
-		ft_printf(GREEN "OK " RESET);
-	else
-		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	check(!standard && !testFunction);
+	checkMemory();
 
 	standard = isascii(test5);
 	testFunction = ft_isascii(test5);
 	ft_printf("test5: ");
-	if (!standard && !testFunction)
-		ft_printf(GREEN "OK " RESET);
-	else
-		ft_printf(RED "KO " RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK\n" RESET);
-	else
-		ft_printf(RED "MKO\n" RESET);
-}
+	check(!standard && !testFunction);
+	checkMemory();
+	write(1, "\n", 1);
