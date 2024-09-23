@@ -5,7 +5,7 @@ cd into the directory <br>
 run make for mandetory part <br>
 run make bonus for the mandetory and bonus functions <br>
 
-<h1>USAGE</h1>
+<h1>READING REPORT</h1>
 if everything is green / yellow your doing well <br>
 <b>NKO</b> means the test got a NULL when it didn't expect one <br>
 <b>SKO</b> means the size you allocated is not correct, either too mush or too few was allocated <br>
