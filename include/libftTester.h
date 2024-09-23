@@ -12,7 +12,12 @@
 # include <ctype.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "../../libft.h"
+# ifndef __cplusplus
+#  include "../../libft.h"
+# endif
+# include <stdarg.h>
+# include <dlfcn.h>
+# include "../tests/memory_checks/memtrack.hpp"
 
 # define RED "\x1b[31m"
 # define GREEN "\x1b[32m"
@@ -68,5 +73,11 @@ void lstlastTest();
 void lstmapTest();
 void lstnewTest();
 void lstsizeTest();
+
+// helper file
+int		ft_printf(const char *string, ...);
+char	*ptr_to_hex(void *ptr);
+char	*uitostr(unsigned int num);
+char	*uint_to_hex_uplow(unsigned int num, int uplow);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:01:55 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/17 15:23:28 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 12:12:58 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,28 @@ void memsetTest()
 	char tab[100];
 	memset(tab, 0, 100);
 	
-	printf("test1: ");
+	ft_printf("test1: ");
 	ft_memset(tab, 'A', 0);
 	if (tab[0] == 0)
-		printf(GREEN "OK " RESET);
+		ft_printf(GREEN "OK " RESET);
 	else
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK " RESET);
+	else
+		ft_printf(RED "MKO " RESET);
 	
-	printf("test2: ");
+	ft_printf("test2: ");
 	ft_memset(tab, 'A', 42);
 	int i = 0;
 	for (; i < 100 && tab[i] == 'A'; ++i)
 		;
 	if (i == 42 && tab[42] == 0)
-		printf(GREEN "OK\n" RESET);
+		ft_printf(GREEN "OK " RESET);
 	else
-		printf(RED "KO\n" RESET);
+		ft_printf(RED "KO " RESET);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK\n" RESET);
+	else
+		ft_printf(RED "MKO\n" RESET);
 }

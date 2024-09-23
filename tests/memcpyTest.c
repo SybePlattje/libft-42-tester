@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:00:58 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/17 15:05:25 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 12:16:21 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,40 @@ void memcpyTest()
 	char dest[100];
 	memset(dest, 'A', 100);
 
-	printf("test1: ");
+	ft_printf("test1: ");
 	ft_memcpy(dest, "coucou", 0);
 	if (dest[0] == 'A')
-		printf(GREEN "OK " RESET);
+		ft_printf(GREEN "OK " RESET);
 	else
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK " RESET);
+	else
+		ft_printf(RED "MKO " RESET);
 	
-	printf("test2: ");
+	ft_printf("test2: ");
 	char *rtn = (char *)ft_memcpy(dest, NULL, 0);
 	if (rtn == dest && dest[0] == 'A')
-		printf(GREEN "OK " RESET);
+		ft_printf(GREEN "OK " RESET);
 	else
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK " RESET);
+	else
+		ft_printf(RED "MKO " RESET);
 	
-	printf("test3: ");
+	ft_printf("test3: ");
 	char src[] = {0, 0};
 	ft_memcpy(dest, src, 2);
 	int i = 0;
 	for (; i < 100 && dest[i] == 0; ++i)
 		;
 	if (i == 2 && dest[2] == 'A')
-		printf(GREEN "OK\n" RESET);
+		ft_printf(GREEN "OK " RESET);
 	else
-		printf(RED "KO\n" RESET);
+		ft_printf(RED "KO " RESET);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK\n" RESET);
+	else
+		ft_printf(RED "MKO\n" RESET);
 }

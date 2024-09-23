@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:27:49 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/17 15:25:34 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 12:58:17 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,33 @@ void putnbrFdTest()
 	test = calloc(sizeof(char), 5);
 	if (test == NULL)
 	{
-		printf(RED "Malloc it test putnbrFdTest failed\n" RESET);
+		ft_printf(RED "Malloc it test putnbrFdTest failed\n" RESET);
 		return;
 	}
 	int fd = open("tests/utils/testNumber.txt", O_CREAT | O_APPEND |  O_RDWR , 0666);
 	
 	if (fd == -1)
 	{
-		printf(RED "Error opening testfile\n" RESET);
+		ft_printf(RED "Error opening testfile\n" RESET);
 		free(test);
 		return;
 	}
-	printf("test1: ");
+	ft_printf("test1: ");
 	ft_putnbr_fd(1256, fd);
 	lseek(fd, 0, SEEK_SET); // Reset the file pointer to the start of the file
 	int bytesRead = read(fd, test, 4);
 	if (bytesRead != 4)
-		printf(RED "KO\n" RESET);
+		ft_printf(RED "KO\n" RESET);
 	else if (strncmp(test, "1256", 4) == 0)
-		printf(GREEN "OK\n" RESET);
+		ft_printf(GREEN "OK " RESET);
 	else
-		printf(RED "KO, Not the right number printed" RESET);
+		ft_printf(RED "KO, Not the right number printed " RESET);
 	close(fd);
 	if (remove("tests/utils/testNumber.txt") != 0)
-		printf(RED "Failed to remove testNumber.txt in tests/utils/\n Remove manualy before running tester again\n" RESET);
+		ft_printf(RED "Failed to remove testNumber.txt in tests/utils/\n Remove manualy before running tester again " RESET);
 	free(test);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK\n" RESET);
+	else
+		ft_printf(RED "MKO\n" RESET);
 }

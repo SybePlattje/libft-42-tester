@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 10:07:57 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/17 11:08:56 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 16:42:19 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,46 @@
 
 void callocTest()
 {
-	printf("test1: ");
+	ft_printf("test1: ");
 	void *test = ft_calloc(0, sizeof(int));
 	if (test == NULL)
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
 	else
 	{
-		printf(GREEN "KO " RESET);
+		ft_printf(GREEN "OK " RESET);
 		free(test);
 	}
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK " RESET);
+	else
+		ft_printf(RED "MKO " RESET);
 
-	printf("test2: ");
+	ft_printf("test2: ");
 	test = ft_calloc(2, ULONG_MAX);
 	if (test == NULL)
-		printf(GREEN "OK " RESET);
+		ft_printf(GREEN "OK " RESET);
 	else
 	{
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
 		free(test);
 	}
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK " RESET);
+	else
+		ft_printf(RED "MKO " RESET);
 
-	printf("test3: ");
+	ft_printf("test3: ");
 	test = ft_calloc(24, sizeof(int));
 	if (test == NULL)
-		printf(RED "KO\n" RESET);
+		ft_printf(RED "KO " RESET);
 	else
 	{
-		printf(GREEN "OK\n" RESET);
+		ft_printf(GREEN "OK " RESET);
 		free(test);
 	}
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK\n" RESET);
+	else
+		ft_printf(RED "MKO\n" RESET);
 }
 

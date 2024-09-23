@@ -6,32 +6,64 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 17:00:54 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/17 09:45:23 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 14:22:55 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libftTester.h"
 void strdupTest()
 {
-	printf("test1: ");
+	ft_printf("test1: ");
 	char *test = "hello";
 	char *output = ft_strdup(test);
 	if (output == NULL)
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
 	else if (output == test)
-		printf(RED "KO " RESET);
+	{
+		ft_printf(RED "KO " RESET);
+		free (output);
+	}
 	else
-		printf(GREEN "OK " RESET);
-	free (output);
+	{
+		ft_printf(GREEN "OK " RESET);
+		int sizeCheck = checkSize(output, sizeof(char) * 6);
+		if (sizeCheck == 1)
+			ft_printf(GREEN "SOK " RESET);
+		else if (sizeCheck == 2)
+			ft_printf(RED "SKO " RESET);
+		else
+			ft_printf(RED "NKO " RESET);
+		free (output);
+	}
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK " RESET);
+	else
+		ft_printf(RED "MKO " RESET);
 
-	printf("test2: ");
+	ft_printf("test2: ");
 	char *test2 = "";
 	output = ft_strdup(test2);
 	if (output == NULL)
-		printf(RED "KO\n" RESET);
+		ft_printf(RED "KO " RESET);
 	else if (output == test2)
-		printf(RED "KO\n" RESET);
+	{
+		ft_printf(RED "KO " RESET);
+		free (output);
+	}
 	else
-		printf(GREEN "OK\n" RESET);
-	free(output);
+	{
+		ft_printf(GREEN "OK " RESET);
+		int sizeCheck = checkSize(output, sizeof(char) * 1);
+		if (sizeCheck == 1)
+			ft_printf(GREEN "SOK ");
+		else if (sizeCheck == 2)
+			ft_printf(RED "SKO " RESET);
+		else
+			ft_printf(RED "NKO " RESET);
+		free (output);
+	}
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK\n" RESET);
+	else
+		ft_printf(RED "MKO\n" RESET);
 }

@@ -3,15 +3,22 @@ NAME = libftTester
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -MMD -MP -g
 
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -MMD -MP -g
+
 LIBFT_DIR = ./../
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC_DIR = ./tests
 OBJ_DIR = ./obj
 OBJ_BONUS_DIR = $(OBJ_DIR)/bonus
+OBJ_CXX_DIR = $(OBJ_DIR)/memory_checks
 
 vpath %.c $(SRC_DIR)
 vpath %.c $(SRC_DIR)/bonus
+vpath %.cpp $(SRC_DIR)/memory_checks
+
+CXX_SRC = memtrack.cpp \
 
 SRC = main.c \
 	atoiTest.c \
@@ -48,6 +55,7 @@ SRC = main.c \
 	substrTest.c \
 	tolowerTest.c \
 	toupperTest.c \
+	helper.c \
 
 SRC_BONUS = lstaddBackTest.c \
 	lstaddFrontTest.c \
@@ -61,16 +69,18 @@ SRC_BONUS = lstaddBackTest.c \
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 OBJ_BONUS = $(SRC_BONUS:%.c=$(OBJ_BONUS_DIR)/%.o)
+OBJ_CXX = $(CXX_SRC:%.cpp=$(OBJ_CXX_DIR)/%.o)
 DEP = $(OBJ:.o=.d)
 DEP_BONUS = $(OBJ_BONUS:.o=.d)
+DEP_CXX = $(OBJ_CXX:.o=.d)
 
 all: $(NAME)
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
-$(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(CFLAGS) $(LIBFT) -o $@ $^
+$(NAME): $(OBJ) $(OBJ_CXX) $(LIBFT)
+	@$(CXX) $(CXXFLAGS) $(LIBFT) -o $@ $^
 	@echo Done compiling!
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -78,11 +88,16 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 -include $(DEP)
 
+$(OBJ_CXX_DIR)/%.o: $(SRC_DIR)/memory_checks/%.cpp
+	@mkdir -p $(dir $@)
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+-include $(DEP_CXX)
+
 bonus: CFLAGS += -D BONUS=1
 
-bonus: $(OBJ) $(OBJ_BONUS) $(LIBFT)
+bonus: $(OBJ) $(OBJ_BONUS) $(OBJ_CXX) $(LIBFT)
 	@make -C $(LIBFT_DIR) bonus
-	@$(CC) $(CFLAGS) $(LIBFT) $(LIBFT_BONUS) -o $(NAME) $^
+	@$(CXX) $(CXXFLAGS) $(LIBFT) -o $(NAME) $^
 	@echo Done compiling!
 
 $(OBJ_BONUS_DIR)/%.o: $(SRC_DIR)/bonus/%.c

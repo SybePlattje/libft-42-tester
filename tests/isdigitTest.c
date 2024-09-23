@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:00:05 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/17 12:37:53 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 16:45:36 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,70 +23,93 @@ void isdigitTest()
 
 	int standard = isdigit(test1);
 	int testFunction = ft_isdigit(test1);
-	printf("test1: ");
+	ft_printf("test1: ");
 	if (standard && testFunction)
 	{
 		if (standard == testFunction)
-			printf(GREEN "OK " RESET);
+			ft_printf(GREEN "OK " RESET);
 		else
-			printf(YELLOW "OK, but different return value " RESET);
+			ft_printf(YELLOW "OK, but different return value " RESET);
 	}
 	else
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK " RESET);
+	else
+		ft_printf(RED "MKO " RESET);
 
 	standard = isdigit(test2);
 	testFunction = ft_isdigit(test2);
-	printf("test2: ");
+	ft_printf("test2: ");
 	if (standard && testFunction)
 	{
 		if (standard == testFunction)
-			printf(GREEN "OK " RESET);
+			ft_printf(GREEN "OK " RESET);
 		else
-			printf(YELLOW "OK, but different return value " RESET);
+			ft_printf(YELLOW "OK, but different return value " RESET);
 	}
 	else
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK " RESET);
+	else
+		ft_printf(RED "MKO " RESET);
 
 	standard = isdigit(test3);
 	testFunction = ft_isdigit(test3);
-	printf("test3: ");
+	ft_printf("test3: ");
 	if (standard && testFunction)
 	{
 		if (standard == testFunction)
-			printf(GREEN "OK " RESET);
+			ft_printf(GREEN "OK " RESET);
 		else
-			printf(YELLOW "OK, but different return value " RESET);
+			ft_printf(YELLOW "OK, but different return value " RESET);
 	}
 	else
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK " RESET);
+	else
+		ft_printf(RED "MKO " RESET);
 
 	standard = isdigit(test4);
 	testFunction = ft_isdigit(test4);
-	printf("test4: ");
+	ft_printf("test4: ");
 	if (standard && testFunction)
 	{
 		if (standard == testFunction)
-			printf(GREEN "OK " RESET);
+			ft_printf(GREEN "OK " RESET);
 		else
-			printf(YELLOW "OK, but different return value " RESET);
+			ft_printf(YELLOW "OK, but different return value " RESET);
 	}
 	else
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK " RESET);
+	else
+		ft_printf(RED "MKO " RESET);
 
 	standard = isdigit(test5);
 	testFunction = ft_isdigit(test5);
-	printf("test5: ");
+	ft_printf("test5: ");
 	if (!standard && !testFunction)
-		printf(GREEN "KO " RESET);
+		ft_printf(GREEN "OK " RESET);
 	else
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK " RESET);
+	else
+		ft_printf(RED "MKO " RESET);
 
 	standard = isdigit(test6);
 	testFunction = ft_isdigit(test6);
-	printf("test6: ");
+	ft_printf("test6: ");
 	if (!standard && !testFunction)
-		printf(GREEN "KO\n" RESET);
+		ft_printf(GREEN "OK " RESET);
 	else
-		printf(RED "KO\n" RESET);
-	// TODO add memcheck
+		ft_printf(RED "KO " RESET);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK\n" RESET);
+	else
+		ft_printf(RED "MKO\n" RESET);
 }

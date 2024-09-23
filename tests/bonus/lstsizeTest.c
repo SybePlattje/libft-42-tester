@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:49:07 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/18 10:54:38 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:12:42 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,46 @@ static void freeList(t_list *head)
 void lstsizeTest()
 {
 	t_list *l = NULL;
-	printf("test1: ");
+	ft_printf("test1: ");
 	if (ft_lstsize(l) == 0)
-		printf(GREEN "KO " RESET);
+		ft_printf(GREEN "OK " RESET);
 	else
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
 	
-	printf("test2: ");
+	ft_printf("test2: ");
 	ft_lstadd_front(&l, ft_lstnew((void *)1));
 	if (ft_lstsize(l) == 1)
-		printf(GREEN "KO " RESET);
+	{
+		ft_printf(GREEN "OK " RESET);
+		int sizeCheck = checkSize(l, sizeof(t_list));
+		if (sizeCheck == 1)
+			ft_printf(GREEN "SOK " RESET);
+		else if (sizeCheck == 2)
+			ft_printf(RED "SKO " RESET);
+		else
+			ft_printf(RED "NKO " RESET);
+	}
 	else
-		printf(RED "KO " RESET);
+		ft_printf(RED "KO " RESET);
 
-	printf("test3: ");
+	ft_printf("test3: ");
 	ft_lstadd_front(&l, ft_lstnew((void *)2));
 	if (ft_lstsize(l) == 2)
-		printf(GREEN "KO\n" RESET);
+	{
+		ft_printf(GREEN "OK " RESET);
+		int sizeCheck = checkSize(l, sizeof(t_list));
+		if (sizeCheck == 1)
+			ft_printf(GREEN "SOK " RESET);
+		else if (sizeCheck == 2)
+			ft_printf(RED "SKO " RESET);
+		else
+			ft_printf(RED "NKO " RESET);
+	}
 	else
-		printf(RED "KO\n" RESET);
+		ft_printf(RED "KO " RESET);
 	freeList(l);
+	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
+		ft_printf(GREEN "MOK\n" RESET);
+	else
+		ft_printf(RED "MKO\n" RESET);
 }
