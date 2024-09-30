@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:27:49 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 12:58:17 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/24 08:50:57 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void putnbrFdTest()
 	if (remove("tests/utils/testNumber.txt") != 0)
 		ft_printf(RED "Failed to remove testNumber.txt in tests/utils/\n Remove manualy before running tester again " RESET);
 	free(test);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK\n" RESET);
-	else
-		ft_printf(RED "MKO\n" RESET);
+	checkMemory();
+	write(1, "\n", 1);
 }

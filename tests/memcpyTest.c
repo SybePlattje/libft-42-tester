@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memcpyTest.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sybe <sybe@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:00:58 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 20:34:09 by sybe             ###   ########.fr       */
+/*   Updated: 2024/09/24 08:42:06 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void memcpyTest()
 
 	ft_printf("test1: ");
 	ft_memcpy(dest, "coucou", 0);
-	check(dest[0] == 'A')
+	check(dest[0] == 'A');
 	checkMemory();
 
 	ft_printf("test2: ");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   itoaTest.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sybe <sybe@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:02:00 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 20:18:06 by sybe             ###   ########.fr       */
+/*   Updated: 2024/09/24 09:38:18 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void itoaTest()
 		ft_printf(RED "NKO " RESET);
 	else
 	{
-		check(!strcmp(!strcmp(output, "-2147483648") && output[11] == '\0'));
+		check(!strcmp(output, "-2147483648") && output[11] == '\0');
 		checkSize(output, sizeof(char) * 12);
 		free(output);
 		checkMemory();
@@ -56,7 +56,7 @@ void itoaTest()
 		ft_printf(RED "NKO\n" RESET);
 	else
 	{
-		check(!strcmp(!strcmp(output, "2147483647") && output[10] == '\0'));
+		check(!strcmp(output, "2147483647") && output[10] == '\0');
 		checkSize(output, sizeof(char) * 11);
 		free(output);
 		checkMemory();

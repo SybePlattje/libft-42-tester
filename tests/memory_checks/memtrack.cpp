@@ -1,9 +1,7 @@
 #include "memtrack.hpp"
 #include <cstring>
 #include <dlfcn.h>
-#include <vector>
 #include <iostream>
-//#include <malloc.h>
 #include <unistd.h>
 
 static void* (*real_malloc)(std::size_t) = nullptr;
@@ -11,6 +9,7 @@ static void (*real_free)(void*) = nullptr;
 
 t_memory* allocation_memory = nullptr;
 std::size_t g_total_allocated_memory = 0;
+static std::size_t start = 0;
 
 static bool inMalloc = false;
 
@@ -71,7 +70,6 @@ extern "C" void* malloc(std::size_t size) {
 				allocation_memory = newBlock;
 
 			g_total_allocated_memory += size;
-			// std::printf("Allocated %zu bytes, total: %zu\n", size, g_total_allocated_memory);
 		}
 		else
 			std::fprintf(stderr, "Allocation failed\n");
@@ -79,7 +77,7 @@ extern "C" void* malloc(std::size_t size) {
 		return ptr;
 	} catch (...)
 	{
-		std::fprintf(stderr, "Error: Exception occurred while updating allocation map\n");
+		std::fprintf(stderr, "Error: Exception occurred while updating allocation memory\n");
 		std::exit(EXIT_FAILURE);
 	}
 }
@@ -101,7 +99,6 @@ extern "C" void free(void* ptr) {
 				else
 					allocation_memory = current->next;
 				g_total_allocated_memory -= current->size;
-				// std::printf("freed %zu bytes, total: %zu\n", current->size, g_total_allocated_memory);
 				real_free(current);
 				break;
 			}
@@ -111,7 +108,7 @@ extern "C" void free(void* ptr) {
 		real_free(ptr);
 	} catch (...)
 	{
-		std::fprintf(stderr, "Error: Exception occurred while updating allocation map\n");
+		std::fprintf(stderr, "Error: Exception occurred while updating allocation memory\n");
 		std::exit(EXIT_FAILURE);
 	}
 }
@@ -124,9 +121,15 @@ void checkSize(void* ptr, std::size_t size)
 		if (current->ptr == ptr)
 		{
 			 if (current->size == size)
+			 {
 			 	ft_printf(GREEN "SOK " RESET);
+				return;
+			 }
 			else
+			{
 				ft_printf(RED "SKO " RESET);
+				return;
+			}
 		}
 		current = current->next;
 	}
@@ -135,10 +138,10 @@ void checkSize(void* ptr, std::size_t size)
 
 void checkMemory()
 {
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "SOK " RESET);
+	if (g_total_allocated_memory == start) 
+		ft_printf(GREEN "MOK " RESET);
 	else
-		ft_printf(RED "SKO " RESET);
+		ft_printf(RED "MKO " RESET);
 }
 
 void check(bool statement)
@@ -147,4 +150,9 @@ void check(bool statement)
 		ft_printf(GREEN "OK " RESET);
 	else
 		ft_printf(RED "KO " RESET);
+}
+
+void setStartAmound(std::size_t size)
+{
+	start = size;
 }

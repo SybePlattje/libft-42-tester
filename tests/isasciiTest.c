@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   isasciiTest.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sybe <sybe@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 12:59:58 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 20:12:29 by sybe             ###   ########.fr       */
+/*   Updated: 2024/09/24 08:42:29 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,3 +74,4 @@ void isasciiTest()
 	check(!standard && !testFunction);
 	checkMemory();
 	write(1, "\n", 1);
+}

@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:48:09 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 17:10:41 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:22:04 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ void lstmapTest()
 	for (int i = 0; i < 4; ++i)
 	{
 		ft_printf("test%d: ", i);
-		if (*(int *)tmp->content == i)
-			ft_printf(GREEN "OK " RESET);
-		else
-			ft_printf(RED "KO " RESET);
+		check(*(int *)tmp->content == i);
 		tmp = (t_list *)tmp->next;
 	}
 
@@ -48,25 +45,12 @@ void lstmapTest()
 	for (int i = 0; i < 4; ++i)
 	{
 		ft_printf("test%d: ", i + 4);
-		if (*(int*)tmp->content == i + 1)
-		{
-			ft_printf(GREEN "OK " RESET);
-			int sizeCheck = checkSize(tmp, sizeof(t_list));
-			if (sizeCheck == 1)
-				ft_printf(GREEN "SOK " RESET);
-			else if (sizeCheck == 2)
-				ft_printf(RED "SKO " RESET);
-			else
-				ft_printf (RED "NKO " RESET);
-		}
-		else
-			ft_printf(RED "KO " RESET);
+		check(*(int*)tmp->content == i + 1);
+		checkSize(tmp, sizeof(t_list));
 		tmp = (t_list *)tmp->next;
 	}
 	freeList(l);
 	ft_lstclear(&m, free);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK\n" RESET);
-	else
-		ft_printf(RED "MKO\n" RESET);
+	checkMemory();
+	write(1, "\n", 1);
 }

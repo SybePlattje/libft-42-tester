@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 14:58:31 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 12:17:33 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/24 08:50:08 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,9 @@ void putendlFdTest()
 	ft_putendl_fd(NULL, fd);
 	lseek(fd, 0, SEEK_SET); // Reset the file pointer to the start of the file
 	int bytesRead = read(fd, test, 9);
-	if (bytesRead != 0)
-		ft_printf(RED "KO " RESET);
-	else
-		ft_printf(GREEN "OK " RESET);
+	check(bytesRead == 0);
 	lseek(fd, 0, SEEK_SET); // Reset the file pointer to the start of the file
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 	
 	ft_printf("test2: ");
 	ft_putendl_fd("Hello", fd);
@@ -57,8 +51,6 @@ void putendlFdTest()
 	if (remove("tests/utils/testLineEnd.txt") != 0)
 		ft_printf(RED "Failed to remove testLineEnd.txt in tests/utils/\n Remove manualy before running tester again\n" RESET);
 	free(test);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK\n" RESET);
-	else
-		ft_printf(RED "MKO\n" RESET);
+	checkMemory();
+	write(1, "\n", 1);
 }

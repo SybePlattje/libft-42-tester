@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:06:32 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 16:18:51 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:42:43 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,11 @@ void substrTest()
 		ft_printf(RED "NKO " RESET);
 	else
 	{
-		if (!strcmp(s, "hello"))
-		{
-			ft_printf(GREEN "OK " RESET);
-			int sizeCheck = checkSize(s, sizeof(char) * 6);
-			if (sizeCheck == 1)
-				ft_printf(GREEN "SOK " RESET);
-			else if (sizeCheck == 2)
-				ft_printf(RED "SKO " RESET);
-			else
-				ft_printf(RED "NKO " RESET);
-		}
-		else
-			ft_printf(RED "KO " RESET);
+		check(!strcmp(s, "hello"));
+		checkSize(s, sizeof(char) * 6);
 		free(s);
 	}
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	ft_printf("test2: ");
 	s = ft_substr("hello", 1, 1);
@@ -46,25 +32,11 @@ void substrTest()
 		ft_printf(RED "NKO " RESET);
 	else
 	{
-		if (!strcmp(s, "e"))
-		{
-			ft_printf(GREEN "OK " RESET);
-			int sizeCheck = checkSize(s, sizeof(char) * 2);
-			if (sizeCheck == 1)
-				ft_printf(GREEN "SOK " RESET);
-			else if (sizeCheck == 2)
-				ft_printf(RED "SKO " RESET);
-			else
-				ft_printf(RED "NKO " RESET);
-		}
-		else
-			ft_printf(RED "KO " RESET);
+		check(!strcmp(s, "e"));
+		checkSize(s, sizeof(char) * 2);
 		free(s);
 	}
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	ft_printf("test3: ");
 	char *str = strdup("1");
@@ -81,26 +53,12 @@ void substrTest()
 	}
 	else
 	{
-		if (!strcmp(s, ""))
-		{
-			ft_printf(GREEN "OK " RESET);
-			int sizeCheck = checkSize(s, sizeof(char) * 1);
-			if (sizeCheck == 1)
-				ft_printf(GREEN "SOK " RESET);
-			else if (sizeCheck == 2)
-				ft_printf(RED "SKO " RESET);
-			else
-				ft_printf(RED "NKO " RESET);
-		}
-		else
-			ft_printf(RED "KO " RESET);
+		check(!strcmp(s, ""));
+		checkSize(s, sizeof(char) * 1);
 		free(s);
 		free(str);
 	}
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	ft_printf("test4: ");
 	str = strdup("0123456789");
@@ -117,26 +75,12 @@ void substrTest()
 	}
 	else
 	{
-		if (!strcmp(s, "9"))
-		{
-			ft_printf(GREEN "OK " RESET);
-			int sizeCheck = checkSize(s, sizeof(char) * 2);
-			if (sizeCheck == 1)
-				ft_printf(GREEN "SOK " RESET);
-			else if (sizeCheck == 2)
-				ft_printf(RED "SKO " RESET);
-			else
-				ft_printf(RED "NKO " RESET);
-		}
-		else
-			ft_printf(RED "KO " RESET);
+		check(!strcmp(s, "9"));
+		checkSize(s, sizeof(char) * 2);
 		free(s);
 		free(str);
 	}
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	ft_printf("test10: ");
 	s = ft_substr("42", 0, 0);
@@ -144,25 +88,11 @@ void substrTest()
 		ft_printf(RED "NKO " RESET);
 	else
 	{
-		if (!strcmp(s, ""))
-		{
-			ft_printf(GREEN "OK " RESET);
-			int sizeCheck = checkSize(s, sizeof(char) * 1);
-			if (sizeCheck == 1)
-				ft_printf(GREEN "SOK " RESET);
-			else if (sizeCheck == 2)
-				ft_printf(RED "SKO " RESET);
-			else
-				ft_printf(RED, "NKO " RESET);
-		}
-		else
-			ft_printf(RED "KO " RESET);
+		check(!strcmp(s, ""));
+		checkSize(s, sizeof(char) * 1);
 		free(s);
 	}
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	ft_printf("test11: ");
 	s = ft_substr("BONJOUR LES HARICOTS !", 8, 14);
@@ -170,25 +100,11 @@ void substrTest()
 		ft_printf(RED "NKO " RESET);
 	else
 	{
-		if (!strcmp(s, "LES HARICOTS !"))
-		{
-			ft_printf(GREEN "OK " RESET);
-			int sizeCheck = checkSize(s, sizeof(char) * 15);
-			if (sizeCheck == 1)
-				ft_printf(GREEN "SOK " RESET);
-			else if (sizeCheck == 2)
-				ft_printf(RED "SKO " RESET);
-			else
-				ft_printf(RED "NKO " RESET);
-		}
-		else
-			ft_printf(RED "KO " RESET);
+		check(!strcmp(s, "LES HARICOTS !"));
+		checkSize(s, sizeof(char) * 15);
 		free(s);
 	}
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 
 	ft_printf("test12: ");
 	s = ft_substr("test", 1, 2);
@@ -196,23 +112,10 @@ void substrTest()
 		ft_printf(RED "NKO " RESET);
 	else
 	{
-		if (!strcmp(s, "es"))
-		{
-			ft_printf(GREEN "OK " RESET);
-			int sizeCheck = checkSize(s, sizeof(char) * 3);
-			if (sizeCheck == 1)
-				ft_printf(GREEN "SOK " RESET);
-			else if (sizeCheck == 2)
-				ft_printf(RED "SKO " RESET);
-			else
-				ft_printf(RED "NKO " RESET);
-		}
-		else
-			ft_printf(RED "KO " RESET);
+		check(!strcmp(s, "es"));
+		checkSize(s, sizeof(char) * 3);
 		free(s);
 	}
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK\n" RESET);
-	else
-		ft_printf(RED "MKO\n" RESET);
+	checkMemory();
+	write(1, "\n", 1);
 }

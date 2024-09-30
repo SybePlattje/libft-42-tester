@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:13:41 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 12:17:03 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/24 08:47:53 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ void putcharFdTest()
 		ft_printf(RED "KO " RESET);
 	close(fd);
 	if (remove("tests/utils/testChar.txt") != 0)
-		ft_printf(RED "Failed to remove testChar.txt in tests/utils/\n Remove manualy before running tester again\n" RESET);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK\n" RESET);
-	else
-		ft_printf(RED "MKO\n" RESET);
+		ft_printf(RED "Failed to remove testChar.txt in tests/utils/\n Remove manualy before running tester again " RESET);
+	checkMemory();
+	write(1, "\n", 1);
 }

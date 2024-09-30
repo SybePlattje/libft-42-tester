@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 14:38:54 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 12:57:24 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/24 08:51:53 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ void putstrFdTest()
 	else
 		ft_printf(GREEN "OK " RESET);
 	lseek(fd, 0, SEEK_SET); // Reset the file pointer to the start of the file
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK " RESET);
-	else
-		ft_printf(RED "MKO " RESET);
+	checkMemory();
 	
 	ft_printf("test2: ");
 	ft_putstr_fd("Hello", fd);
@@ -57,8 +54,6 @@ void putstrFdTest()
 	if (remove("tests/utils/testString.txt") != 0)
 		ft_printf(RED "Failed to remove testTring.txt in tests/utils/\n Remove manualy before running tester again\n" RESET);
 	free(test);
-	if (g_total_allocated_memory == 72704) // 72704 is already allocated before we start
-		ft_printf(GREEN "MOK\n" RESET);
-	else
-		ft_printf(RED "MKO\n" RESET);
+	checkMemory();
+	write(1, "\n", 1);
 }

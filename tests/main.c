@@ -6,7 +6,7 @@
 /*   By: splattje <splattje@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:14:15 by splattje          #+#    #+#             */
-/*   Updated: 2024/09/23 11:41:08 by splattje         ###   ########.fr       */
+/*   Updated: 2024/09/24 11:08:25 by splattje         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
+	setStartAmound(g_total_allocated_memory);
 	ft_printf("atoi tests\n");
 	atoiTest();
 	ft_printf("bzero tests\n");
